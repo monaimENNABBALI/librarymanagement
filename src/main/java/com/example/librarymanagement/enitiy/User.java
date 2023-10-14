@@ -1,8 +1,6 @@
 package com.example.librarymanagement.enitiy;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +15,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name ="role_id",referencedColumnName = "id")
+    private Role role;
 }
